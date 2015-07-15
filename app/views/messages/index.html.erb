@@ -1,25 +1,48 @@
 <!-- <h1>Messages#index</h1>
 <p>Find me in app/views/messages/index.html.erb</p> -->
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Messages
-  </div>
-  
-  <div class="panel-body">
-    <% @messages.each do |message| %>
-      <span class="label label-info"><%= message.name %></span>
-      <%= message.body %>
-      <br>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="panel panel-default col-sm-6">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          Messages
+        </h2>
+      </div>
+      
+      <div class="panel-body">
+        <% @messages.each do |message| %>
+          <span class="label label-info"><%= message.name %></span>
+          <%= message.body %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="panel panel-default col-sm-6">
+      <div class="panel-heading">
+        <h2 class="panel-title">
+          Enter new message
+        </h2>
+      </div>
+      
+      <div class="panel-body">
+        <%= form_for("Message.new", :html => {:class => "form-horizontal"}) do |f| %>
+          <label for="inputName" class="col-xs-2 control-label">
+            Name
+          </label>
+          <div class="col-xs-10">
+            <%= f.text_field :name, :class => "form-control", :id => "inputName", :placeholder => "名前" %>
+          </div>
+          <label for="inputMessage" class="col-xs-2 control-label">
+            Message
+          </label>
+          <div class="col-xs-10">
+            <%= f.text_area :body, :class => "form-control", :id => "inputMessage", :placeholder => "メッセージ" %>
+          </div>
+          <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
-<%= form_for(Message.new) do |f| %>
-  Name:
-  <%= f.text_field :name %>
-
-  Message:
-  <%= f.text_field :body %>
-  <%= f.submit %>
-<% end %>

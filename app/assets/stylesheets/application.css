@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+/* Rails Bootstrap Forms from https://github.com/bootstrap-ruby/rails-bootstrap-forms
+Not sure why the below is in comment, but that's what the instructions say
+*/
