@@ -48,5 +48,5 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
   end
   
-  ## Terry is no longer here
+  ## Terry iz no longer here
 end
