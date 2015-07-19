@@ -15,24 +15,5 @@
   </div>
 </div>
 
-<%= form_for(@message) do |f| %>
-  <% if @message.errors.present? %>
-    <div class="alert alert-danger">
-      <%= alert %>
-        <ul>
-          <% @message.errors.full_messages.each do |full_message| %>
-            <li>
-              <%= full_message %>
-            </li>
-          <% end %>
-        </ul>
-    </div>
-  <% end %>
-  
-  Name:
-  <%= f.text_field :name %>
-
-  Message:
-  <%= f.text_field :body %>
-  <%= f.submit class: "btn btn-sm btn-primary" %>
-<% end %>
+<% #Import partial template %>
+<%= render 'form' %>
