@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :set_message, only: [:edit, :update, :destroy]
+  
   def index
     # Get all messages
     @messages = Message.all
@@ -19,9 +21,31 @@ class MessagesController < ApplicationController
     end
   end
   
+  def edit
+  end
+  
+  def update
+    if @message.update(message_params)
+      # Redirect to top if save successful
+      redirect_to root_path , notice: 'Your message has been saved'
+    else
+      # Redirect to edit page if save unsuccessful
+      render 'edit'
+    end
+  end
+  
+  def destroy
+    @message.destroy
+    redirect_to root_path, notice: 'Your message has been deleted'
+  end
+  
   private
   def message_params
     params.require(:message).permit(:name, :body)
+  end
+  
+  def set_message
+    @message = Message.find(params[:id])
   end
   
   ## Terry is no longer here
